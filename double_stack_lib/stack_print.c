@@ -6,14 +6,14 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 02:14:16 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 04:51:27 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 06:16:46 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack_lib.h"
 #include <stdio.h>
 
-void	ft_print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
 	t_list	*curr_a;
 	t_list	*curr_b;

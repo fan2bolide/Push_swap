@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 05:27:15 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 06:16:17 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ void	push_swap(int argc, char **argv)
 	t_stack	*stack;
 
 	if (!ft_verif_args(argv, argc))
-		return (-1);
-	tab = ft_parse_push_swap(argv, argc);
+		return ;
+	tab = parse_push_swap(argv, argc);
 	size = argc - 1;
-	stack = ft_stack_create_from(tab, size);
+	stack = stack_create_from(tab, size);
 	ft_print_stack(stack);
+	ft_stack_destroy(stack);
 }
 
 int main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:22:02 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 04:43:04 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 06:50:19 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ typedef struct s_stack
 	t_list *b;
 }	t_stack;
 
-t_stack	*ft_stack_create_from(int *tab, size_t size);
-void	ft_print_stack(t_stack *stack);
-void	ft_print_stack_rev(t_stack *stack);
+t_stack	*stack_create_from(int *tab, size_t size);
+void	print_stack(t_stack *stack);
 
 #endif

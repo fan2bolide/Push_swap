@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_lib.h                                        :+:      :+:    :+:   */
+/*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 00:22:02 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 04:43:04 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/12/01 23:28:19 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/02 06:50:07 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_LIB_H
-# define STACK_LIB_H
-# include "libft.h"
+#include "push_swap.h"
 
-typedef struct s_stack
+void stack_push_a(t_stack *stack)
 {
-	t_list *a;
-	t_list *b;
-}	t_stack;
+	t_list *move;
 
-t_stack	*ft_stack_create_from(int *tab, size_t size);
-void	ft_print_stack(t_stack *stack);
-void	ft_print_stack_rev(t_stack *stack);
+	move = stack->b;
+	stack->b = stack->b->next;
+	move->next = NULL;
+	ft_lstadd_back(&stack->a, move);
+}
 
-#endif
+void stack_push_b(t_stack *stack)
+{
+	ft_lstadd_back(&stack->b, stack->a->content);
+	stack->a->content = NULL;
+	ft_lstpop_back(&stack->a, free);
+}
