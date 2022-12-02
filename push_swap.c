@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 06:16:17 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 09:28:57 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,52 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
-void	push_swap(int argc, char **argv)
+int	push_swap(int argc, char **argv)
 {
 	int		*tab;
 	size_t	size;
 	t_stack	*stack;
 
 	if (!ft_verif_args(argv, argc))
-		return ;
+		return (-1);
 	tab = parse_push_swap(argv, argc);
 	size = argc - 1;
 	stack = stack_create_from(tab, size);
-	ft_print_stack(stack);
-	ft_stack_destroy(stack);
+	free(tab);
+	print_stack(stack);
+	
+	//-------------------------------//
+	char *input = get_next_line(0);
+	while (input)
+	{
+		if (!ft_strcmp(ft_strtrim(input, "\n"), "pa"))
+		{
+			if (!stack_push_a(stack))
+				return (-1);
+		}
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "pb"))
+		{
+			if (!stack_push_b(stack))
+				return (-1);
+		}
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "stop"))
+		{
+			free(input);
+			exit(0);
+		}
+		input = get_next_line(0);
+		print_stack(stack);
+	}
+		
+	
+	
+	return (0);
+
+	//-------------------------------//
+	// ft_stack_destroy(stack);
 }
 
 int main(int argc, char **argv)
 {
-	push_swap(argc, argv);
-	return(0);
+	return(push_swap(argc, argv));
 }

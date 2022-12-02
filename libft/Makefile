@@ -57,8 +57,7 @@ SRC			=	ft_atoi.c			\
 				ft_substr.c			\
 				ft_tolower.c		\
 				ft_toupper.c		\
-
-BONUS_SRC	=	ft_lstnew.c			\
+				ft_lstnew.c			\
 				ft_lstadd_front.c	\
 				ft_lstadd_back.c	\
 				ft_lstsize.c		\
@@ -69,6 +68,8 @@ BONUS_SRC	=	ft_lstnew.c			\
 				ft_lstmap.c			\
 				ft_lstpop_back.c	\
 				ft_lstpop_front.c	\
+				get_next_line.c		\
+				get_next_line_utils.c\
 
 OBJ = $(SRC:.c=.o)
 

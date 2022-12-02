@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 05:04:01 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 05:25:21 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 08:39:56 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,9 @@
 
 void	ft_lstpop_back(t_list** list, void(*del)(void *))
 {
-	t_list*	curr;
-	t_list*	remove;
+	t_list *first;
 
-	remove = *list;
-	while (remove && remove->next)
-	{
-		curr = remove;
-		remove = remove->next;
-	}
-	ft_lstdelone(remove, del);
-	curr->next = NULL;
+	first = *list;
+	*list = (*list)->next;
+	ft_lstdelone(first, del);
 }
