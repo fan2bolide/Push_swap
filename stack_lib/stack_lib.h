@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:22:02 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 00:23:53 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 02:21:48 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	*ft_stack_create_from(int *tab, size_t size);
+void	ft_print_stack(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:31:57 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/11/21 14:11:13 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 04:40:10 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (curr && curr->next)
 		curr = curr->next;
 	curr->next = new;
+	new->next = NULL;
 }
