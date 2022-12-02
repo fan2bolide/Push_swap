@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_lib.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 22:23:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 00:24:30 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/12/02 00:22:02 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/02 00:23:53 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef STACK_LIB_H
+# define STACK_LIB_H
+#include "libft.h"
 
-# include "libft.h"
-# include "stack_lib.h"
+typedef struct s_stack
+{
+	t_list *a;
+	t_list *b;
+}	t_stack;
 
+t_stack	*ft_stack_create_from(int *tab, size_t size);
 
 #endif

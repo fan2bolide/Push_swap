@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 22:23:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 00:24:30 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/12/01 23:34:39 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/02 00:01:42 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft.h"
-# include "stack_lib.h"
+int	*ft_parse(char **argv, int argc)
+{
+	int	*tab;
+	int	i;
 
-
-#endif
+	tab = malloc(sizeof (int) * (argc - 1));
+	if (!tab)
+		return (NULL);
+	i = 1;
+	while (i < argc)
+	{
+		tab[i - 1] = ft_atoi(argv[i]);
+		i++;
+	}
+	return (tab);
+}
