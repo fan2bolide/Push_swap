@@ -6,13 +6,13 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:34:39 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 00:01:42 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 02:16:01 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*ft_parse(char **argv, int argc)
+int	*ft_parse_push_swap(char **argv, int argc)
 {
 	int	*tab;
 	int	i;
