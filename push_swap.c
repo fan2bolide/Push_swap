@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 22:06:38 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 23:49:33 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ int	push_swap(int argc, char **argv)
 			stack_push_a(stack);
 		else if (!ft_strcmp(ft_strtrim(input, "\n"), "pb"))
 			stack_push_b(stack);
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "sb"))
+			stack_swap(&stack->b);
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "sa"))
+			stack_swap(&stack->a);
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "ra"))
+			stack_rotate(&stack->a);
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rb"))
+			stack_rotate(&stack->b);
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rrb"))
+			stack_reverse_rotate(&stack->b);
+		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rra"))
+			stack_reverse_rotate(&stack->a);
 		else if (!ft_strcmp(ft_strtrim(input, "\n"), "stop"))
 		{
 			free(input);
