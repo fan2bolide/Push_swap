@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 00:24:30 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 04:19:10 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include "libft.h"
 # include "stack_lib.h"
 
+int	*ft_parse_push_swap(char **argv, int argc);
 
 #endif

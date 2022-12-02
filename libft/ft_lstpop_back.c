@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_lib.h                                        :+:      :+:    :+:   */
+/*   ft_lstpop_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 00:22:02 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 04:43:04 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/12/02 05:04:01 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/02 05:25:21 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_LIB_H
-# define STACK_LIB_H
-# include "libft.h"
+#include "libft.h"
 
-typedef struct s_stack
+void	ft_lstpop_back(t_list** list, void(*del)(void *))
 {
-	t_list *a;
-	t_list *b;
-}	t_stack;
+	t_list*	curr;
+	t_list*	remove;
 
-t_stack	*ft_stack_create_from(int *tab, size_t size);
-void	ft_print_stack(t_stack *stack);
-void	ft_print_stack_rev(t_stack *stack);
-
-#endif
+	remove = *list;
+	while (remove && remove->next)
+	{
+		curr = remove;
+		remove = remove->next;
+	}
+	ft_lstdelone(remove, del);
+	curr->next = NULL;
+}

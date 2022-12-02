@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 02:15:45 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 05:27:15 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,22 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
-int main(int argc, char **argv)
+void	push_swap(int argc, char **argv)
 {
 	int		*tab;
 	size_t	size;
 	t_stack	*stack;
 
-	if (ft_verif_args(argv, argc))
+	if (!ft_verif_args(argv, argc))
 		return (-1);
-	tab = ft_parse(argv, argc);
+	tab = ft_parse_push_swap(argv, argc);
 	size = argc - 1;
 	stack = ft_stack_create_from(tab, size);
-	return (0);
+	ft_print_stack(stack);
+}
+
+int main(int argc, char **argv)
+{
+	push_swap(argc, argv);
+	return(0);
 }
