@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 00:20:55 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 02:15:45 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_verif_args(char **argv, int argc)
+static int	ft_verif_args(char **argv, int argc)
 {
 	int i;
 
@@ -37,6 +37,6 @@ int main(int argc, char **argv)
 		return (-1);
 	tab = ft_parse(argv, argc);
 	size = argc - 1;
-	stack = ft_stack_create_from
+	stack = ft_stack_create_from(tab, size);
 	return (0);
 }
