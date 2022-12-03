@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_create.c                                     :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 06:16:10 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/03 04:14:26 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,17 @@ t_stack	*stack_create_from(int *tab, size_t size)
 		i++;
 	}
 	return (stack);
+}
+
+int	stack_is_sorted(t_stack *stack)
+{
+	t_list	*curr;
+
+	curr = stack->a;
+	while (curr && curr->next)
+	{
+		if (*(int *)curr->content > *(int *)curr->next->content)
+			return (0);
+	}
+	return (1);
 }
