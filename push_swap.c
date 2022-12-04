@@ -6,12 +6,11 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 06:01:45 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/04 07:47:46 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void push_swap(t_stack *stack, int logfile_fd)
 {

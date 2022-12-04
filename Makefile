@@ -6,14 +6,14 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/04 05:31:27 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/04 09:35:47 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -fsanitize=address -g3
 
 all : lib
-	$(CC) $(FLAGS) *.c stack_lib/*.c libft/libft.a -I stack_lib -I libft -I .
+	$(CC) $(FLAGS) -o push_swap *.c stack_lib/*.c libft/libft.a -I stack_lib -I libft -I .
 
 lib : libft/libft.a
 
@@ -28,7 +28,8 @@ clean :
 	$(MAKE) clean -C libft
 	
 fclean :
-	$(RM) a.out
+	$(RM) push_swap
+	$(RM) -r push_swap.dSYM
 	$(MAKE) fclean -C libft
 
 re : fclean all

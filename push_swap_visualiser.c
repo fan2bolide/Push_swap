@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 06:12:32 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/04 07:48:09 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,43 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
+void	apply_instruction(char *instruction, t_stack *stack)
+{
+	if (!ft_strcmp(ft_strtrim(instruction, "\n"), "pa"))
+		stack_push_a(stack);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "pb"))
+		stack_push_b(stack);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "sb"))
+		stack_swap(&stack->b);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "sa"))
+		stack_swap(&stack->a);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "ra"))
+		stack_rotate(&stack->a);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rb"))
+		stack_rotate(&stack->b);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rr"))
+	{
+		stack_rotate(&stack->b);
+		stack_rotate(&stack->a);	
+	}
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rrb"))
+		stack_reverse_rotate(&stack->b);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rra"))
+		stack_reverse_rotate(&stack->a);
+	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rrr"))
+	{
+		stack_reverse_rotate(&stack->b);
+		stack_reverse_rotate(&stack->a);
+	}
+}
+
 int	push_swap_visualiser(int argc, char **argv)
 {
 	int		*tab;
 	size_t	size;
 	t_stack	*stack;
 	t_stack	*stack_copy;
-	char *input;
+	char	*input;
 
 	if (!ft_verif_args(argv, argc))
 		return (-1);
@@ -53,38 +83,11 @@ int	push_swap_visualiser(int argc, char **argv)
 	input = get_next_line(fd);
 	while (input)
 	{
-		if (!ft_strcmp(ft_strtrim(input, "\n"), "pa"))
-			stack_push_a(stack);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "pb"))
-			stack_push_b(stack);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "sb"))
-			stack_swap(&stack->b);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "sa"))
-			stack_swap(&stack->a);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "ra"))
-			stack_rotate(&stack->a);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rb"))
-			stack_rotate(&stack->b);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rr"))
-		{
-			stack_rotate(&stack->b);
-			stack_rotate(&stack->a);	
-		}
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rrb"))
-			stack_reverse_rotate(&stack->b);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rra"))
-			stack_reverse_rotate(&stack->a);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rrr"))
-		{
-			stack_reverse_rotate(&stack->b);
-			stack_reverse_rotate(&stack->a);
-		}
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "stop"))
-			return (free(input), 0);
+		apply_instruction(input, stack);
 		if (stack_is_sorted(stack))
 		{
 			print_stack(stack);
-			printf("Sorted !\n");
+			printf("Sorted !\n\n");
 			close(fd);
 			return (0);
 		}
