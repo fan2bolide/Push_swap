@@ -6,11 +6,11 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/02 07:43:20 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/04 05:31:27 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -fsanitize=address -g
+FLAGS = -fsanitize=address -g3
 
 all : lib
 	$(CC) $(FLAGS) *.c stack_lib/*.c libft/libft.a -I stack_lib -I libft -I .

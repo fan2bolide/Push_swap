@@ -5,91 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 04:13:10 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/04 06:01:45 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	ft_verif_args(char **argv, int argc)
+void push_swap(t_stack *stack, int logfile_fd)
 {
-	int i;
+	char	*log_message;
+	t_list	*curr;
+	t_list	*min;
 
-	i = 0;
-	while (i < argc - 1)
+	//verify is the stack is sorted, if it is no need to do anything.
+	while (stack->a && !list_is_sorted(stack->a))
 	{
-		if ((ft_atoi(argv[i + 1]) == 0 && ft_strcmp(argv[i + 1], "0"))
-			|| (ft_atoi(argv[i + 1]) == -1 && ft_strncmp(argv[i + 1], "-1", 2)))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	push_swap(int argc, char **argv)
-{
-	int		*tab;
-	size_t	size;
-	t_stack	*stack;
-	char *input;
-
-	if (!ft_verif_args(argv, argc))
-		return (-1);
-	tab = parse_push_swap(argv, argc);
-	size = argc - 1;
-	stack = stack_create_from(tab, size);
-	free(tab);
-	print_stack(stack);
-	input = get_next_line(0);
-	while (input)
-	{
-		if (!ft_strcmp(ft_strtrim(input, "\n"), "pa"))
-			stack_push_a(stack);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "pb"))
-			stack_push_b(stack);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "sb"))
-			stack_swap(&stack->b);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "sa"))
+		curr = stack->a;
+		if (*(int *)curr->content > *(int *)curr->next->content)
+		{
 			stack_swap(&stack->a);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "ra"))
+			log_message = "sa\n";
+			write(logfile_fd, log_message, ft_strlen(log_message));
+		}
+		min = stack_get_min(stack->a);
+		while (stack->a && stack->a != min)
+		{
 			stack_rotate(&stack->a);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rb"))
-			stack_rotate(&stack->b);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rr"))
-		{
-			stack_rotate(&stack->b);
-			stack_rotate(&stack->a);	
+			log_message = "ra\n";
+			write(logfile_fd, log_message, ft_strlen(log_message));
 		}
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rrb"))
-			stack_reverse_rotate(&stack->b);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rra"))
-			stack_reverse_rotate(&stack->a);
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "rrr"))
-		{
-			stack_reverse_rotate(&stack->b);
-			stack_reverse_rotate(&stack->a);
-		}
-		else if (!ft_strcmp(ft_strtrim(input, "\n"), "stop"))
-			return (free(input), 0);
-		if (stack_is_sorted(stack))
-		{
-			print_stack(stack);
-			printf("Sorted !\n");
-			return (0);
-		}
-		print_stack(stack);
-		free(input);
-		input = get_next_line(0);
+		stack_push_b(stack);
+		log_message = "pb\n";
+		write(logfile_fd, log_message, ft_strlen(log_message));
 	}
-	return (0);
-
-	//-------------------------------//
-	// ft_stack_destroy(stack);
-}
-
-int main(int argc, char **argv)
-{
-	return(push_swap(argc, argv));
+	while (stack->b)
+	{
+		if (*(int *)ft_lstlast(stack->b)->content > *(int *)stack->b->content)
+		{
+			stack_reverse_rotate(&stack->b);
+			log_message = "rrb\n";
+			write(logfile_fd, log_message, ft_strlen(log_message));
+		}
+		stack_push_a(stack);
+		log_message = "pa\n";
+		write(logfile_fd, log_message, ft_strlen(log_message));
+	}
 }

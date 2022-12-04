@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 03:47:51 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/04 05:59:28 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,32 @@ t_stack	*stack_create_from(int *tab, size_t size)
 
 int	stack_is_sorted(t_stack *stack)
 {
-	t_list	*curr;
+	return (!stack->b && list_is_sorted(stack->a));
+}
 
-	if (stack->b)
-		return (0);
-	if (!stack->a)
-		return (1);
-	curr = stack->a;
-	while (curr && curr->next)
+t_list *stack_get_min(t_list *list)
+{
+	t_list *min;
+	
+	min = list;
+	while (list)
 	{
-		if (*(int *)curr->content > *(int *)curr->next->content)
+		if(*(int *)list->content < *(int *)min->content)
+		{
+			min = list;
+		}
+		list = list->next;
+	}
+	return (min);
+}
+
+int	list_is_sorted(t_list *list)
+{
+	while (list && list->next)
+	{
+		if (*(int *)list->content > *(int *)list->next->content)
 			return (0);
-		curr = curr->next;
+		list = list->next;
 	}
 	return (1);
 }
