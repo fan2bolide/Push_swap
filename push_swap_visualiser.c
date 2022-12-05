@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/05 23:21:48 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/05 23:34:57 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
-static void	stack_visualiser_apply_instruction2(char *instruction, t_stack *stack)
+static void	stack_visualiser_apply_instruction2(char *instruction,
+	t_stack *stack)
 {
 	if (!ft_strncmp(instruction, "rr\n", 2))
 	{
