@@ -6,16 +6,16 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 05:59:28 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/05 22:58:55 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_stack	*stack_create_from(int *tab, size_t size)
 {
 	t_stack	*stack;
-	int		i;
+	size_t	i;
 	int		*data;
 
 	stack = malloc(sizeof(t_stack));
@@ -41,14 +41,14 @@ int	stack_is_sorted(t_stack *stack)
 	return (!stack->b && list_is_sorted(stack->a));
 }
 
-t_list *stack_get_min(t_list *list)
+t_list	*stack_get_min(t_list *list)
 {
-	t_list *min;
-	
+	t_list	*min;
+
 	min = list;
 	while (list)
 	{
-		if(*(int *)list->content < *(int *)min->content)
+		if (*(int *)list->content < *(int *)min->content)
 		{
 			min = list;
 		}
@@ -66,4 +66,11 @@ int	list_is_sorted(t_list *list)
 		list = list->next;
 	}
 	return (1);
+}
+
+void	stack_destroy(t_stack *stack)
+{
+	ft_lstclear(&stack->a, free);
+	ft_lstclear(&stack->b, free);
+	free(stack);
 }

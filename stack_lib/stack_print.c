@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 02:14:16 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 06:17:07 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/05 23:13:54 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	print_stack(t_stack *stack)
 {
 	t_list	*curr_a;
 	t_list	*curr_b;
-	static int i = 0;
 
 	curr_a = stack->a;
 	curr_b = stack->b;

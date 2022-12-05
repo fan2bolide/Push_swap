@@ -1,0 +1,13 @@
+random
+*.o
+libft/*.o
+**.o
+push_swap.dSYM
+checker
+input_file.txt
+log_file.log
+push_swap.dSYM/Contents/Info.plist
+push_swap
+libft/libft.a
+.vscode/settings.json
+.vscode/c_cpp_properties.json

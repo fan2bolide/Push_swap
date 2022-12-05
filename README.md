@@ -3,15 +3,11 @@
 This is the begining of a new 42 project : Push_swap
 here you can try it for now by doing make in the repo and ./a.out <args>.
 	Example : ./push_swap 1 2 3 4 5
+That command will give you the instructions to follow to get the stack sorted.
 
-You must have multiple args of type int so it can create 2 stacks with those numbers.
-Once the project is running you can run multiple commands to handle the stacks a and b together : 
+If you're putting less than 10 numbers, it will apply a quick sort for little sizes.
 
-  - pa -> push a -> pushint the uppest value of the stack b to a
-  - pb -> same from a to b
-
-  - ra -> rotate a -> rotate the stack a so the first value of a goes to last
-  - rb -> same with stack b
-
-  - rra -> reverse rotate a -> rotate the stack a so the last value of a goes to first
-  - rrb -> same with stack b
+If the number of arguments you give to the program is 10 or greater,
+my program will apply a radix sort based on binary digits.
+This sorting algorithm is efficient for high number of argument, and is an easy way
+to implement a sort based on two stacks with limited instruction set.

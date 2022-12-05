@@ -6,49 +6,45 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 07:47:46 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/05 23:22:24 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_swap(t_stack *stack, int logfile_fd)
+static int	ft_verif_args(char **argv, int argc)
 {
-	char	*log_message;
-	t_list	*curr;
-	t_list	*min;
+	int	i;
 
-	//verify is the stack is sorted, if it is no need to do anything.
-	while (stack->a && !list_is_sorted(stack->a))
+	i = 0;
+	while (i < argc - 1)
 	{
-		curr = stack->a;
-		if (*(int *)curr->content > *(int *)curr->next->content)
-		{
-			stack_swap(&stack->a);
-			log_message = "sa\n";
-			write(logfile_fd, log_message, ft_strlen(log_message));
-		}
-		min = stack_get_min(stack->a);
-		while (stack->a && stack->a != min)
-		{
-			stack_rotate(&stack->a);
-			log_message = "ra\n";
-			write(logfile_fd, log_message, ft_strlen(log_message));
-		}
-		stack_push_b(stack);
-		log_message = "pb\n";
-		write(logfile_fd, log_message, ft_strlen(log_message));
+		if ((ft_atoi(argv[i + 1]) == 0 && ft_strcmp(argv[i + 1], "0"))
+			|| (ft_atoi(argv[i + 1]) == -1 && ft_strncmp(argv[i + 1], "-1", 2)))
+			return (0);
+		i++;
 	}
-	while (stack->b)
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	int		*tab;
+	size_t	size;
+	t_stack	*stack;
+
+	if (!ft_verif_args(argv, argc))
+		return (-1);
+	tab = parse_push_swap(argv, argc);
+	size = argc - 1;
+	stack = stack_create_from(tab, size);
+	free(tab);
+	if (size < 10)
 	{
-		if (*(int *)ft_lstlast(stack->b)->content > *(int *)stack->b->content)
-		{
-			stack_reverse_rotate(&stack->b);
-			log_message = "rrb\n";
-			write(logfile_fd, log_message, ft_strlen(log_message));
-		}
-		stack_push_a(stack);
-		log_message = "pa\n";
-		write(logfile_fd, log_message, ft_strlen(log_message));
+		push_swap_little(stack);
+		stack_destroy(stack);
 	}
+	else
+		push_swap_big(stack);
+	return (0);
 }

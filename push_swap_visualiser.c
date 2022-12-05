@@ -6,17 +6,17 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/04 07:48:09 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/05 23:21:48 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 #include <fcntl.h>
+#include <stdio.h>
 
 static int	ft_verif_args(char **argv, int argc)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < argc - 1)
@@ -29,34 +29,63 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
-void	apply_instruction(char *instruction, t_stack *stack)
+static void	stack_visualiser_apply_instruction2(char *instruction, t_stack *stack)
 {
-	if (!ft_strcmp(ft_strtrim(instruction, "\n"), "pa"))
-		stack_push_a(stack);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "pb"))
-		stack_push_b(stack);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "sb"))
-		stack_swap(&stack->b);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "sa"))
-		stack_swap(&stack->a);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "ra"))
+	if (!ft_strncmp(instruction, "rr\n", 2))
+	{
+		stack_rotate(&stack->b);
 		stack_rotate(&stack->a);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rb"))
-		stack_rotate(&stack->b);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rr"))
-	{
-		stack_rotate(&stack->b);
-		stack_rotate(&stack->a);	
 	}
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rrb"))
+	else if (!ft_strncmp(instruction, "rrb\n", 3))
 		stack_reverse_rotate(&stack->b);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rra"))
+	else if (!ft_strncmp(instruction, "rra\n", 3))
 		stack_reverse_rotate(&stack->a);
-	else if (!ft_strcmp(ft_strtrim(instruction, "\n"), "rrr"))
+	else if (!ft_strncmp(instruction, "rrr\n", 3))
 	{
 		stack_reverse_rotate(&stack->b);
 		stack_reverse_rotate(&stack->a);
 	}
+}
+
+static void	stack_visualiser_apply_instruction(char *instruction, t_stack *stack)
+{
+	if (!ft_strncmp(instruction, "pa\n", 2))
+		stack_push_a(stack);
+	else if (!ft_strncmp(instruction, "pb\n", 2))
+		stack_push_b(stack);
+	else if (!ft_strncmp(instruction, "sb\n", 2))
+		stack_swap(&stack->b);
+	else if (!ft_strncmp(instruction, "sa\n", 2))
+		stack_swap(&stack->a);
+	else if (!ft_strncmp(instruction, "ra\n", 2))
+		stack_rotate(&stack->a);
+	else if (!ft_strncmp(instruction, "rb\n", 2))
+		stack_rotate(&stack->b);
+	else
+		stack_visualiser_apply_instruction2(instruction, stack);
+}
+
+static int	push_swap_visualuser_input_verifier(t_stack *stack)
+{
+	char	*input;
+
+	input = get_next_line(0);
+	while (input)
+	{
+		stack_visualiser_apply_instruction(input, stack);
+		if (stack_is_sorted(stack))
+		{
+			print_stack(stack);
+			printf("Sorted !\n\n");
+			free(input);
+			break ;
+		}
+		print_stack(stack);
+		free(input);
+		input = get_next_line(0);
+	}
+	stack_destroy(stack);
+	return (0);
 }
 
 int	push_swap_visualiser(int argc, char **argv)
@@ -64,45 +93,13 @@ int	push_swap_visualiser(int argc, char **argv)
 	int		*tab;
 	size_t	size;
 	t_stack	*stack;
-	t_stack	*stack_copy;
-	char	*input;
 
 	if (!ft_verif_args(argv, argc))
 		return (-1);
 	tab = parse_push_swap(argv, argc);
 	size = argc - 1;
 	stack = stack_create_from(tab, size);
-	stack_copy = stack_create_from(tab, size);
 	free(tab);
 	print_stack(stack);
-	printf("Start sorting\n");
-	int fd = open("./log_file.log", O_WRONLY | O_CREAT, 0644);
-	push_swap(stack_copy, fd);
-	close(fd);
-	fd = open("./log_file.log", O_RDONLY);
-	input = get_next_line(fd);
-	while (input)
-	{
-		apply_instruction(input, stack);
-		if (stack_is_sorted(stack))
-		{
-			print_stack(stack);
-			printf("Sorted !\n\n");
-			close(fd);
-			return (0);
-		}
-		print_stack(stack);
-		free(input);
-		input = get_next_line(fd);
-	}
-	printf("???\n");
-	return (0);
-
-	//-------------------------------//
-	// ft_stack_destroy(stack);
-}
-
-int main(int argc, char **argv)
-{
-	return(push_swap_visualiser(argc, argv));
+	return (push_swap_visualuser_input_verifier(stack));
 }

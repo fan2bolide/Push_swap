@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/double_stack_lib",
+                "${workspaceFolder}/stack_lib",
+                "${workspaceFolder}/libft",
                 "${workspaceFolder}/stack_lib"
             ],
             "defines": [],
@@ -14,7 +15,8 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "macos-clang-x64"
+            "intelliSenseMode": "macos-clang-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4

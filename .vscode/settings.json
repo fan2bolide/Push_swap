@@ -1,7 +1,7 @@
 {
 	"files.associations": {
-		"stack_lib.h": "c",
 		"push_swap.h": "c",
-		"get_next_line.h": "c"
-	}
+		"stack_lib.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }

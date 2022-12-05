@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:56:05 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 07:17:53 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/05 22:54:16 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ size_t	ft_putnbr(int nb);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstpop_back(t_list** list, void (*del)(void *));
-void	ft_lstpop_front(t_list** list, void (*del)(void *));
+void	ft_lstpop_back(t_list **list, void (*del)(void *));
+void	ft_lstpop_front(t_list **list, void (*del)(void *));
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
