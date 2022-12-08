@@ -19,4 +19,4 @@ This project comes with a visualizer so you could be testing an algorithm writte
 with the instruction set of push_swap. (not working for now)
 
 
-TODO : add the environnement variable handling and update verification of arguments.
+TODO : Makefile, add a rule to make the viewer and update the viewer with new argument verification !
