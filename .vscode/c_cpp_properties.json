@@ -4,9 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/stack_lib",
-                "${workspaceFolder}/libft",
-                "${workspaceFolder}/stack_lib"
+                "${workspaceFolder}/stack_lib/*",
+                "${workspaceFolder}/libft/*"
             ],
             "defines": [],
             "macFrameworkPath": [

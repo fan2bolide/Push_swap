@@ -6,13 +6,13 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 02:49:33 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/11/19 05:37:43 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 04:34:27 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_strs(const char *s, char c)
+static size_t	count_strs(const char *s, char c)
 {
 	int	i;
 	int	count;
@@ -32,7 +32,7 @@ size_t	count_strs(const char *s, char c)
 	return (count);
 }
 
-size_t	ft_strclen(const char *s, char c)
+static size_t	ft_strclen(const char *s, char c)
 {
 	int	i;
 	int	count;
@@ -49,7 +49,7 @@ size_t	ft_strclen(const char *s, char c)
 	return (count);
 }
 
-char	*get_string(char *return_str, const char *s, char c)
+static char	*get_string(char *return_str, const char *s, char c)
 {
 	int	i;
 	int	j;
