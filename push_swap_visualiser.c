@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/08 04:48:56 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 21:07:39 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	push_swap_visualiser(int argc, char **argv)
 
 	if (!ft_verif_args(argv, argc))
 		return (-1);
-	tab = parse_push_swap(argv, &argc);
+	tab = parse_push_swap(argv, argc);
 	size = argc - 1;
 	stack = stack_create_from(tab, size);
 	free(tab);

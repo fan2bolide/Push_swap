@@ -15,5 +15,8 @@ my program will apply a radix sort based on binary digits.
 This sorting algorithm is efficient for high number of argument, and is an easy way
 to implement a sort based on two stacks with limited instruction set.
 
+This project comes with a visualizer so you could be testing an algorithm written
+with the instruction set of push_swap. (not working for now)
+
 
 TODO : add the environnement variable handling and update verification of arguments.
