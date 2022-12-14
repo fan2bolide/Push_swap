@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 05:26:12 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 07:39:01 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ OBJ = $(SRC:.c=.o)
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-all : lib lib_stacks $(NAME) .mandatory
+all : lib .mandatory
+	$(MAKE) lib_stacks
+	$(MAKE) $(NAME)
 
 .mandatory :
 	touch .mandatory
@@ -73,7 +75,8 @@ fclean : clean
 	$(MAKE) fclean -C stack_lib
 	$(MAKE) fclean -C libft
 
-re : fclean all
+re : fclean
+	$(MAKE) all
 
 .PHONY : all lib run re clean fclean bonus
 

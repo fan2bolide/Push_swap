@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 01:32:11 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 02:06:59 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 07:31:39 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ fclean: clean
 	make fclean -C $(LIBFT_PATH)
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 .PHONY : all bonus clean fclean re lib
 
