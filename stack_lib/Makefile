@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 01:32:11 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 01:43:19 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 02:06:59 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,7 @@ DEPENDS        :=        $(SRC:.c=.d)
 
 all	: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
-	cp $(LIBFT) $(NAME)
+$(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 %.o : %.c Makefile
