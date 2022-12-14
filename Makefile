@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 07:39:01 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 09:05:42 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ SRC =	parsing.c push_swap_big.c push_swap_little.c push_swap.c
 
 BONUS_SRC = push_swap_viewer.c
 
-DEPENDS	:=	$(SRC:.c=.d)
+DEPENDS	:=	$(addprefix obj/,$(SRC:.c=.d)) $(addprefix obj/,${BONUS_SRC:.c=.d})
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix obj/,$(SRC:.c=.o))
 
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
+BONUS_OBJ = $(addprefix obj/,$(BONUS_SRC:.c=.o))
 
-all : lib .mandatory
+all : create_obj_folder lib .mandatory
 	$(MAKE) lib_stacks
 	$(MAKE) $(NAME)
 
@@ -41,15 +41,18 @@ all : lib .mandatory
 $(NAME) : $(OBJ) .mandatory
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
 
-bonus : lib lib_stacks .bonus 
+bonus : create_obj_folder lib lib_stacks .bonus 
 
 .bonus : $(BONUS_OBJ) $(OBJ)
 	$(CC) $(OBJ) $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
 	touch .bonus
 	$(RM) .mandatory
 
-%.o : %.c Makefile
-	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft -I .
+create_obj_folder :
+	mkdir -p obj
+
+obj/%.o : %.c Makefile
+	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft -I . -o $@
 
 debug : lib
 	$(CC) $(SRC) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
