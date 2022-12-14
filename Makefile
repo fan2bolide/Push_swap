@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 09:05:42 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 09:55:58 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,8 @@ bonus : create_obj_folder lib lib_stacks .bonus
 create_obj_folder :
 	mkdir -p obj
 
-obj/%.o : %.c Makefile
-	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft -I . -o $@
+obj/%.o : src/%.c Makefile
+	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib/headers -I libft/headers -I headers -o $@
 
 debug : lib
 	$(CC) $(SRC) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
@@ -69,7 +69,9 @@ run : all
 clean :
 	$(RM) $(OBJ) $(BONUS_OBJ) $(DEPENDS)
 	$(RM) -r push_swap.dSYM
+	$(MAKE) clean -C stack_lib
 	$(MAKE) clean -C libft
+	$(RM) -r obj
 	
 fclean : clean
 	$(RM) $(NAME)

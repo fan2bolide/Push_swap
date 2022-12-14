@@ -6,11 +6,11 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/05 22:58:55 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 09:47:20 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "stack_lib.h"
 
 t_stack	*stack_create_from(int *tab, size_t size)
 {

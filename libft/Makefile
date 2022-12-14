@@ -76,24 +76,26 @@ SRC			=	ft_atoi.c			\
 				ft_putnbr_base_unsigned.c\
 				
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix obj/,$(SRC:.c=.o))
 
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
+all	: create_obj_folder $(NAME)
 
-all	: $(NAME) 
+$(NAME): $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
 
-$(NAME): $(OBJ) $(BONUS_OBJ)
-	ar -rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+obj/%.o : src/%.c Makefile headers/libft.h
+	cc -Wall -Wextra -Werror -c $< -o $@ -I headers
 
-%.o : %.c Makefile libft.h
-	cc -Wall -Wextra -Werror -c $<
+create_obj_folder :
+	mkdir -p obj
 
 clean:
-	rm -f $(OBJ)
-	rm -f $(BONUS_OBJ)
+	$(RM) -f $(OBJ)
+	$(RM) -f $(BONUS_OBJ)
+	$(RM) -r obj
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) -f $(NAME)
 
 re: fclean all
 

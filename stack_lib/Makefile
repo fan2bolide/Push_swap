@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 01:32:11 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 07:31:39 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 09:54:24 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,27 +20,32 @@ SRC			=	stack_print.c	\
 				stack_index.c	\
 				instructions.c	\
 
-OBJ = $(SRC:.c=.o)
-DEPENDS        :=        $(SRC:.c=.d)
+OBJ				:=		$(addprefix obj/,$(SRC:.c=.o))
+DEPENDS			:=		$(addprefix obj/,$(SRC:.c=.d))
 
-all	: $(NAME)
+all	: create_obj_folder $(NAME)
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-%.o : %.c Makefile
-	cc -Wall -Wextra -Werror -c $< -MD -I $(LIBFT_PATH) -I .
+obj/%.o : src/%.c Makefile
+	cc -Wall -Wextra -Werror -c $< -MD -I $(LIBFT_PATH)/headers -I headers -o $@
+
+create_obj_folder :
+	mkdir -p obj
 
 clean:
 	make clean -C $(LIBFT_PATH)
-	rm -f $(OBJ)
-	rm -f $(DEPENDS)
+	$(RM) -f $(OBJ)
+	$(RM) -f $(DEPENDS)
+	$(RM) -r obj
 
 fclean: clean
-	make fclean -C $(LIBFT_PATH)
-	rm -f $(NAME)
+	make clean -C $(LIBFT_PATH)
+	$(RM) -f $(NAME)
 
 re: fclean
+	make fclean -C $(LIBFT_PATH)
 	$(MAKE) all
 
 .PHONY : all bonus clean fclean re lib
