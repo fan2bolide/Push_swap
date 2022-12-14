@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 01:47:25 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 02:40:07 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,21 @@ OBJ = $(SRC:.c=.o)
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-all : lib lib_stacks $(NAME)
+all : lib lib_stacks $(NAME) .mandatory
 
-$(NAME) : $(OBJ)
+.mandatory :
+	touch .mandatory
+	rm .bonus
+
+$(NAME) : $(OBJ) .mandatory
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
+
+bonus : lib lib_stacks .bonus 
+
+.bonus : $(BONUS_OBJ) $(OBJ)
+	$(CC) $(OBJ) $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
+	touch .bonus
+	rm .mandatory
 
 %.o : %.c Makefile
 	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft/ -I .
@@ -57,11 +68,13 @@ clean :
 	
 fclean : clean
 	$(RM) $(NAME)
+	$(RM) $(BONUS_SRC:.c=.d)
+	$(RM) .mandatory .bonus
 	$(MAKE) fclean -C stack_lib
 	$(MAKE) fclean -C libft
 
 re : fclean all
 
-.PHONY : all lib run re clean fclean
+.PHONY : all lib run re clean fclean bonus
 
 -include $(DEPENDS)
