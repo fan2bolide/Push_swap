@@ -70,6 +70,11 @@ SRC			=	ft_atoi.c			\
 				ft_lstpop_front.c	\
 				get_next_line.c		\
 				get_next_line_utils.c\
+				ft_print_hexa.c		\
+				ft_printf.c			\
+				ft_print_int.c		\
+				ft_putnbr_base_unsigned.c\
+				
 
 OBJ = $(SRC:.c=.o)
 

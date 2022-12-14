@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 14:38:18 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/14 05:13:12 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/11/25 10:26:53 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/08 00:16:24 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr(char const *str)
+int	ft_print_int(int nb)
 {
-	int	i;
+	return (ft_putnbr(nb));
+}
+
+int	ft_print_unsigned(unsigned int nb)
+{
+	int	res;
 	int	error;
 
-	i = 0;
-	if (!str)
-		return (write(1, "(null)", 6));
-	while (str[i])
-		i++;
-	error = write(1, str, i);
-	if (error == -1)
+	res = 0;
+	error = 0;
+	if (nb >= 10)
+		error = ft_print_unsigned(nb / 10);
+	if (error < 0)
 		return (error);
-	return (i);
+	res += error;
+	error = ft_putchar(nb % 10 + '0');
+	if (error < 0)
+		return (error);
+	res += error;
+	return (res);
 }

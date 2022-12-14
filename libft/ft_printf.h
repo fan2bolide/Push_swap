@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 14:38:18 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/14 05:13:12 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/11/24 16:43:00 by bajeanno          #+#    #+#             */
+/*   Updated: 2022/12/14 05:28:57 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "libft.h"
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int	ft_putstr(char const *str)
-{
-	int	i;
-	int	error;
+int	ft_printf(const char *format, ...);
+int	ft_print_addr(void *ptr);
+int	ft_print_int(int nb);
+int	ft_print_unsigned(unsigned int nb);
+int	ft_print_hexa(int nb);
+int	ft_print_hexa_capslock(int nb);
+int	ft_putnbr_base_unsigned(size_t nb, char *base);
 
-	i = 0;
-	if (!str)
-		return (write(1, "(null)", 6));
-	while (str[i])
-		i++;
-	error = write(1, str, i);
-	if (error == -1)
-		return (error);
-	return (i);
-}
+#endif

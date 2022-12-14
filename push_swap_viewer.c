@@ -6,13 +6,13 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/08 23:10:05 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 05:25:50 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <fcntl.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
 static int	ft_verif_args(char **argv, int argc)
 {
@@ -77,7 +77,7 @@ static int	push_swap_visualuser_input_verifier(t_stack *stack)
 		if (stack_is_sorted(stack))
 		{
 			print_stack(stack);
-			printf("Sorted !\n\n");
+			ft_printf("Sorted !\n");
 			free(input);
 			break ;
 		}

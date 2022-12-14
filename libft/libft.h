@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:56:05 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/05 22:54:16 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 05:14:27 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-size_t	ft_putchar(int c);
+int		ft_putchar(int c);
 int		ft_isset(char c, char const *set);
 
 char	*ft_strcat(char *src, char *dest);
@@ -69,7 +69,7 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(const char *s, char c);
 
-size_t	ft_putstr(char const *s);
+int		ft_putstr(char const *s);
 size_t	ft_putendl(char const *s);
 
 char	*ft_strnew(size_t size);
@@ -95,7 +95,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *str, int fd);
 void	ft_putnbr_fd(int nb, int fd);
-size_t	ft_putnbr(int nb);
+int		ft_putnbr(int nb);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

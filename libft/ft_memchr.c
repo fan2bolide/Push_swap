@@ -6,12 +6,11 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:46:47 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/11/10 18:51:05 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 05:03:51 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

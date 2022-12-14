@@ -6,13 +6,13 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 02:40:07 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 05:26:12 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-FLAGS = -Werror -Wall -Wextra -o $(NAME) -I stack_lib -I libft/ -I .
+FLAGS = -Werror -Wall -Wextra -o $(NAME) -I stack_lib -I libft -I .
 
 DEBUG_FLAGS = -fsanitize=address -g3
 
@@ -34,7 +34,7 @@ all : lib lib_stacks $(NAME) .mandatory
 
 .mandatory :
 	touch .mandatory
-	rm .bonus
+	$(RM) .bonus
 
 $(NAME) : $(OBJ) .mandatory
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
@@ -44,10 +44,10 @@ bonus : lib lib_stacks .bonus
 .bonus : $(BONUS_OBJ) $(OBJ)
 	$(CC) $(OBJ) $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
 	touch .bonus
-	rm .mandatory
+	$(RM) .mandatory
 
 %.o : %.c Makefile
-	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft/ -I .
+	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft -I .
 
 debug : lib
 	$(CC) $(SRC) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
