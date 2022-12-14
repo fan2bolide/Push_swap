@@ -6,36 +6,62 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/04 13:18:38 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 01:47:25 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -Werror -Wall -Wextra -o push_swap
+NAME = push_swap
+
+FLAGS = -Werror -Wall -Wextra -o $(NAME) -I stack_lib -I libft/ -I .
+
 DEBUG_FLAGS = -fsanitize=address -g3
 
-all : lib
-	$(CC) $(FLAGS) -o push_swap *.c stack_lib/*.c libft/libft.a -I stack_lib -I libft -I .
+LIBFT = libft/libft.a
+
+STACK_LIB = stack_lib/stack_lib.a
+
+SRC =	parsing.c push_swap_big.c push_swap_little.c push_swap.c
+
+BONUS_SRC = push_swap_viewer.c
+
+DEPENDS	:=	$(SRC:.c=.d)
+
+OBJ = $(SRC:.c=.o)
+
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
+all : lib lib_stacks $(NAME)
+
+$(NAME) : $(OBJ)
+	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
+
+%.o : %.c Makefile
+	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib -I libft/ -I .
 
 debug : lib
-	$(CC) $(FLAGS) $(DEBUG_FLAGS) -o push_swap *.c stack_lib/*.c libft/libft.a -I stack_lib -I libft -I .
+	$(CC) $(SRC) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
 
-lib : libft/libft.a
-
-libft/libft.a :
+lib : 
 	$(MAKE) -C libft
+
+lib_stacks :
+	$(MAKE) -C stack_lib
 
 run : all
 	./a.out
 
 clean :
-	$(RM) *.o
+	$(RM) $(OBJ) $(BONUS_OBJ) $(DEPENDS)
 	$(RM) -r push_swap.dSYM
 	$(MAKE) clean -C libft
 	
-fclean :
-	$(RM) push_swap
+fclean : clean
+	$(RM) $(NAME)
+	$(MAKE) fclean -C stack_lib
 	$(MAKE) fclean -C libft
 
 re : fclean all
 
 .PHONY : all lib run re clean fclean
+
+-include $(DEPENDS)

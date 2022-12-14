@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/08 21:05:43 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 23:10:37 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	push_swap_little(t_stack *stack);
 t_list	*stack_get_min(t_list *list);
 t_stack	*stack_get_bitsize_of_max_value(t_stack *stack);
 int		stack_count_under(t_stack *stack, int data);
+int		push_swap_viewer(int argc, char **argv);
 
 #endif

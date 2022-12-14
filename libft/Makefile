@@ -83,9 +83,6 @@ $(NAME): $(OBJ) $(BONUS_OBJ)
 %.o : %.c Makefile libft.h
 	cc -Wall -Wextra -Werror -c $<
 
-bonus : $(BONUS_OBJ)
-	ar -rcs $(NAME) $(BONUS_OBJ)
-
 clean:
 	rm -f $(OBJ)
 	rm -f $(BONUS_OBJ)

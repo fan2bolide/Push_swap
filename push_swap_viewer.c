@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_visualiser.c                             :+:      :+:    :+:   */
+/*   push_swap_viewer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/08 21:07:39 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 23:10:05 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
-static void	stack_visualiser_apply_instruction2(char *instruction,
+static void	stack_viewer_apply_instruction2(char *instruction,
 	t_stack *stack)
 {
 	if (!ft_strncmp(instruction, "rr\n", 2))
@@ -48,7 +48,7 @@ static void	stack_visualiser_apply_instruction2(char *instruction,
 	}
 }
 
-static void	stack_visualiser_apply_instruction(char *instruction, t_stack *stack)
+static void	stack_viewer_apply_instruction(char *instruction, t_stack *stack)
 {
 	if (!ft_strncmp(instruction, "pa\n", 2))
 		stack_push_a(stack);
@@ -63,7 +63,7 @@ static void	stack_visualiser_apply_instruction(char *instruction, t_stack *stack
 	else if (!ft_strncmp(instruction, "rb\n", 2))
 		stack_rotate(&stack->b);
 	else
-		stack_visualiser_apply_instruction2(instruction, stack);
+		stack_viewer_apply_instruction2(instruction, stack);
 }
 
 static int	push_swap_visualuser_input_verifier(t_stack *stack)
@@ -73,7 +73,7 @@ static int	push_swap_visualuser_input_verifier(t_stack *stack)
 	input = get_next_line(0);
 	while (input)
 	{
-		stack_visualiser_apply_instruction(input, stack);
+		stack_viewer_apply_instruction(input, stack);
 		if (stack_is_sorted(stack))
 		{
 			print_stack(stack);
@@ -89,7 +89,7 @@ static int	push_swap_visualuser_input_verifier(t_stack *stack)
 	return (0);
 }
 
-int	push_swap_visualiser(int argc, char **argv)
+int	push_swap_viewer(int argc, char **argv)
 {
 	int		*tab;
 	size_t	size;
