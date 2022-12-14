@@ -17,6 +17,3 @@ to implement a sort based on two stacks with limited instruction set.
 
 This project comes with a visualizer so you could be testing an algorithm written
 with the instruction set of push_swap. (not working for now)
-
-
-TODO : Makefile, add a rule to make the viewer and update the viewer with new argument verification !
