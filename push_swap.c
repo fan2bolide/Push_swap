@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/08 23:04:37 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 01:52:19 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static int	str_is_made_of(char *str, char *set)
 
 	i = 0;
 	while (str[i])
-	{
 		if (!ft_isset(str[i++], set))
 			return (0);
-	}
 	return (1);
 }
 
@@ -56,7 +54,7 @@ static int	ft_verif_args(char **argv, int argc)
 		i++;
 	}
 	i = 1;
-	while (i < argc - 1)
+	while (i < argc)
 	{
 		if (!str_is_made_of(argv[i++], "0123456789 +-"))
 			return (0);
