@@ -13,3 +13,5 @@ push_swap
 .vscode/
 obj
 *.a
+.mandatory
+.bonus
