@@ -6,13 +6,10 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/12/15 22:38:18 by bajeanno         ###   ########lyon.fr    #
-=======
-#    Updated: 2022/12/15 22:49:51 by bajeanno         ###   ########lyon.fr    #
->>>>>>> master
+#    Updated: 2022/12/15 22:55:16 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = push_swap
 
@@ -88,6 +85,6 @@ fclean : clean
 re : fclean
 	$(MAKE) all
 
-.PHONY : all lib run re clean fclean viewer
+.PHONY : all lib run re clean fclean bonus
 
 -include $(DEPENDS)
