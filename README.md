@@ -20,6 +20,6 @@ with the instruction set of push_swap. (not working for now)
 
 ERROR CHECK : 
 The program will check your entries and display 'error' if : 
-- the entry cant go into an int (4B)
-- the entry is not convertible into a number (ex : ./push_swap 1 2 three 4)
-- the entry contains other symbols than '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' ' ' '+' '-'
+- the entry cant go into an int (4B);
+- the entry is not convertible into a number (ex : ./push_swap 1 2 three 4);
+- the entry contains other symbols than '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' ' ' '+' '-';
