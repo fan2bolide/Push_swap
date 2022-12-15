@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/14 09:47:20 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 21:43:41 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ t_stack	*stack_create_from(int *tab, size_t size)
 		ft_lstadd_back(&stack->a, ft_lstnew(data));
 		i++;
 	}
-	return (stack);
-}
-
-int	stack_is_sorted(t_stack *stack)
-{
-	return (!stack->b && list_is_sorted(stack->a));
+	return (free(tab), stack);
 }
 
 t_list	*stack_get_min(t_list *list)
@@ -55,6 +50,11 @@ t_list	*stack_get_min(t_list *list)
 		list = list->next;
 	}
 	return (min);
+}
+
+int	stack_is_sorted(t_stack *stack)
+{
+	return (!stack->b && list_is_sorted(stack->a));
 }
 
 int	list_is_sorted(t_list *list)
