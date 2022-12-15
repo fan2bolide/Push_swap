@@ -6,13 +6,13 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 22:02:56 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 22:25:40 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "push_swap.h"
 #include <fcntl.h>
-#include "ft_printf.h"
 
 static int	ft_verif_args(char **argv, int argc)
 {
@@ -30,7 +30,7 @@ static int	ft_verif_args(char **argv, int argc)
 }
 
 static void	stack_viewer_apply_instruction2(char *instruction,
-	t_stack *stack)
+											t_stack *stack)
 {
 	if (!ft_strncmp(instruction, "rr\n", 2))
 	{
@@ -69,8 +69,9 @@ static void	stack_viewer_apply_instruction(char *instruction, t_stack *stack)
 static int	push_swap_visualuser_input_verifier(t_stack *stack)
 {
 	char	*input;
-	int fd = open("logfile", O_RDONLY);
+	int		fd;
 
+	fd = open("logfile", O_RDONLY);
 	input = get_next_line(fd);
 	while (input)
 	{

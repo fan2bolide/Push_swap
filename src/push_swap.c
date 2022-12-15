@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 21:43:03 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 22:27:18 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	check_doubles(int *tab, size_t size)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < size)
@@ -34,7 +34,7 @@ static int	check_doubles(int *tab, size_t size)
 
 static int	str_is_made_of(char *str, char *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -45,7 +45,7 @@ static int	str_is_made_of(char *str, char *set)
 
 static int	ft_verif_args_one_argument(char **argv)
 {
-	int i;
+	int	i;
 
 	if (!str_is_made_of(argv[1], "0123456789 +-"))
 		return (0);
@@ -79,7 +79,6 @@ static int	ft_verif_args(char **argv, int argc)
 	}
 	return (1);
 }
-
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:41:18 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 21:54:37 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 22:26:30 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_stack	*stack_index(t_stack *stack)
 	curr = stack->a;
 	tab = malloc(sizeof(int) * ft_lstsize(stack->a));
 	if (!tab)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (curr)
 	{

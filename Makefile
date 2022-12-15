@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/15 22:05:34 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/15 22:34:39 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ all : create_obj_folder lib .mandatory
 
 .mandatory :
 	touch .mandatory
-	$(RM) .bonus
+	$(RM) .viewer
 
 $(NAME) : $(OBJ) .mandatory
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o $(NAME)
@@ -75,8 +75,9 @@ clean :
 	
 fclean : clean
 	$(RM) $(NAME)
+	$(RM) viewer
 	$(RM) $(BONUS_SRC:.c=.d)
-	$(RM) .mandatory .bonus
+	$(RM) .mandatory .viewer
 	$(MAKE) fclean -C stack_lib
 	$(MAKE) fclean -C libft
 
