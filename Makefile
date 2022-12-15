@@ -6,7 +6,11 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/12/15 22:38:18 by bajeanno         ###   ########lyon.fr    #
+=======
+#    Updated: 2022/12/15 22:49:51 by bajeanno         ###   ########lyon.fr    #
+>>>>>>> master
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +45,7 @@ all : create_obj_folder lib .mandatory
 $(NAME) : $(OBJ) .mandatory
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o $(NAME)
 
-viewer : create_obj_folder lib lib_stacks .viewer 
+bonus : create_obj_folder lib lib_stacks .viewer
 
 .viewer : $(BONUS_OBJ) $(OBJ)
 	$(CC) obj/parsing.o $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o viewer
