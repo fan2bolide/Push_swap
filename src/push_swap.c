@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 06:12:57 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 21:43:03 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,8 @@ int	main(int argc, char **argv)
 	if (!check_doubles(tab, size))
 		return (free(tab), write(1, "Error\n", 6), 1);
 	stack = stack_create_from(tab, size);
-	free(tab);
 	if (size < 10)
-	{
 		push_swap_little(stack);
-		stack_destroy(stack);
-	}
 	else
 		push_swap_big(stack);
 	return (0);

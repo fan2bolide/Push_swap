@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:12:07 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/05 23:12:24 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 21:44:10 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	push_swap_little(t_stack *stack)
 	}
 	while (stack->b)
 		stack_push_a(stack);
+	stack_destroy(stack);
 }

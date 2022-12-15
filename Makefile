@@ -6,13 +6,13 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 09:55:58 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/15 22:05:34 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-FLAGS = -Werror -Wall -Wextra -o $(NAME) -I stack_lib -I libft -I .
+FLAGS = -Werror -Wall -Wextra -I stack_lib -I libft -I .
 
 DEBUG_FLAGS = -fsanitize=address -g3
 
@@ -39,13 +39,13 @@ all : create_obj_folder lib .mandatory
 	$(RM) .bonus
 
 $(NAME) : $(OBJ) .mandatory
-	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
+	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o $(NAME)
 
-bonus : create_obj_folder lib lib_stacks .bonus 
+viewer : create_obj_folder lib lib_stacks .viewer 
 
-.bonus : $(BONUS_OBJ) $(OBJ)
-	$(CC) $(OBJ) $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS)
-	touch .bonus
+.viewer : $(BONUS_OBJ) $(OBJ)
+	$(CC) obj/parsing.o $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o viewer
+	touch .viewer
 	$(RM) .mandatory
 
 create_obj_folder :
@@ -54,8 +54,8 @@ create_obj_folder :
 obj/%.o : src/%.c Makefile
 	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib/headers -I libft/headers -I headers -o $@
 
-debug : lib
-	$(CC) $(SRC) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
+debug : lib lib_stacks
+	$(CC) $(OBJ) $(STACK_LIB) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
 
 lib : 
 	$(MAKE) -C libft

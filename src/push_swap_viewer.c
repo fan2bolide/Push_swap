@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/14 05:25:50 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 22:02:56 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ static void	stack_viewer_apply_instruction(char *instruction, t_stack *stack)
 static int	push_swap_visualuser_input_verifier(t_stack *stack)
 {
 	char	*input;
+	int fd = open("logfile", O_RDONLY);
 
-	input = get_next_line(0);
+	input = get_next_line(fd);
 	while (input)
 	{
 		stack_viewer_apply_instruction(input, stack);
@@ -83,13 +84,16 @@ static int	push_swap_visualuser_input_verifier(t_stack *stack)
 		}
 		print_stack(stack);
 		free(input);
-		input = get_next_line(0);
+		input = get_next_line(fd);
 	}
+	if (!stack_is_sorted(stack))
+		ft_printf("???????????????????????????????\n");
+	ft_printf("Bien ouej\n");
 	stack_destroy(stack);
 	return (0);
 }
 
-int	push_swap_viewer(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		*tab;
 	size_t	size;
@@ -100,7 +104,6 @@ int	push_swap_viewer(int argc, char **argv)
 	tab = parse_push_swap(argv, argc);
 	size = argc - 1;
 	stack = stack_create_from(tab, size);
-	free(tab);
 	print_stack(stack);
 	return (push_swap_visualuser_input_verifier(stack));
 }
