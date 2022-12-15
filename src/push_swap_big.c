@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:44:35 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/05 23:18:31 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 22:23:59 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	stack_radix_get_max_bits_number(t_list *stack)
 {
-	int		max;
+	int	max;
 
 	max = 0;
 	while (stack)
@@ -28,8 +28,8 @@ static int	stack_radix_get_max_bits_number(t_list *stack)
 
 static void	stack_radix_sort(t_stack *stack, int sort_index)
 {
-	int		i;
-	int		size;
+	int	i;
+	int	size;
 
 	i = 0;
 	size = ft_lstsize(stack->a);
