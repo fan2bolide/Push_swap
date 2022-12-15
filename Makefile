@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/15 22:34:39 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/15 22:38:18 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,6 @@ fclean : clean
 re : fclean
 	$(MAKE) all
 
-.PHONY : all lib run re clean fclean bonus
+.PHONY : all lib run re clean fclean viewer
 
 -include $(DEPENDS)
