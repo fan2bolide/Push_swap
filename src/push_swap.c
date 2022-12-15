@@ -6,11 +6,16 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/14 05:51:34 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/15 05:12:41 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	check_overflow(char *arg)
+{
+	return (ft_atoll(arg) > INT_MAX || ft_atoll(arg) < INT_MIN);
+}
 
 static int	str_is_made_of(char *str, char *set)
 {
@@ -33,8 +38,7 @@ static int	ft_verif_args_one_argument(char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if ((ft_atoi(argv[i]) == 0 && ft_strcmp(argv[i], "0"))
-			|| (ft_atoi(argv[i]) == -1 && ft_strncmp(argv[i], "-1", 2)))
+		if (check_overflow(argv[i]))
 			return (free(argv), 0);
 		i++;
 	}
@@ -48,8 +52,7 @@ static int	ft_verif_args(char **argv, int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if ((ft_atoi(argv[i]) == 0 && ft_strcmp(argv[i], "0"))
-			|| (ft_atoi(argv[i]) == -1 && ft_strncmp(argv[i], "-1", 2)))
+		if (check_overflow(argv[i]))
 			return (0);
 		i++;
 	}
@@ -61,6 +64,7 @@ static int	ft_verif_args(char **argv, int argc)
 	}
 	return (1);
 }
+
 
 int	main(int argc, char **argv)
 {
