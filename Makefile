@@ -6,10 +6,11 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/15 22:55:16 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/16 13:11:07 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
+MAKEFLAGS += -j4
 
 NAME = push_swap
 
