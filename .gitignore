@@ -1,4 +1,3 @@
-random
 *.o
 libft/*.o
 **.o
