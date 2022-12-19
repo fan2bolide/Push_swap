@@ -15,3 +15,10 @@ obj
 *.a
 .mandatory
 .bonus
+README.md
+.gitignore.vog
+testing
+viewer
+test.png
+logfile
+choupi-tester
