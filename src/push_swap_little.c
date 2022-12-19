@@ -6,13 +6,13 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:12:07 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/16 14:56:01 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/18 04:03:13 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_index(t_list *list, t_list *node)
+static int	get_index_of_node(t_list *list, t_list *node)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ static int	get_index(t_list *list, t_list *node)
 
 static void	push_swap_little_rotate(t_stack *stack, t_list *min)
 {
-	if (get_index(stack->a, min) <= ft_lstsize(stack->a) / 2)
+	if (get_index_of_node(stack->a, min) <= ft_lstsize(stack->a) / 2)
 	{
 		while (stack->a && stack->a != min)
 		{
@@ -52,14 +52,9 @@ static void	push_swap_little_rotate(t_stack *stack, t_list *min)
 void	push_swap_little(t_stack *stack)
 {
 	t_list	*min;
-
+	
 	while (stack->a && !list_is_sorted(stack->a))
 	{
-		if (*(int *)stack->a->content > *(int *)stack->a->next->content)
-		{
-			stack_swap(&stack->a);
-			ft_putstr("sa\n");
-		}
 		min = stack_get_min(stack->a);
 		push_swap_little_rotate(stack, min);
 		if (!list_is_sorted(stack->a))

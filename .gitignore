@@ -10,3 +10,6 @@ test.png
 .mandatory
 testing
 .gitignore.vog
+.bonus
+.vscode
+README.md
