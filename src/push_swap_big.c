@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:44:35 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 22:23:59 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/18 04:18:38 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,26 @@ static int	stack_radix_get_max_bits_number(t_list *stack)
 	return (max);
 }
 
-static void	stack_radix_sort(t_stack *stack, int sort_index)
+static void	stack_radix_sort_b(t_stack *stack, int sort_index)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	size = ft_lstsize(stack->b);
+	while (i++ < size)
+	{
+		if (((*(int *)stack->b->content) >> sort_index) % 2 == 1)
+			stack_push_a(stack);
+		else
+		{
+			stack_rotate(&stack->b);
+			ft_putstr("rb\n");
+		}
+	}
+}
+
+static void	stack_radix_sort_a(t_stack *stack, int sort_index)
 {
 	int	i;
 	int	size;
@@ -43,8 +62,7 @@ static void	stack_radix_sort(t_stack *stack, int sort_index)
 			ft_putstr("ra\n");
 		}
 	}
-	while (stack->b)
-		stack_push_a(stack);
+	stack_radix_sort_b(stack, sort_index + 1);
 }
 
 void	push_swap_big(t_stack *stack)
@@ -55,7 +73,9 @@ void	push_swap_big(t_stack *stack)
 	stack = stack_index(stack);
 	max_index = stack_radix_get_max_bits_number(stack->a);
 	sort_index = 0;
-	while (!stack_is_sorted(stack) && sort_index <= max_index)
-		stack_radix_sort(stack, sort_index++);
+	while (!list_is_sorted(stack->a) && sort_index < max_index)
+		stack_radix_sort_a(stack, sort_index++);
+	while (stack->b)
+		stack_push_a(stack);
 	stack_destroy(stack);
 }

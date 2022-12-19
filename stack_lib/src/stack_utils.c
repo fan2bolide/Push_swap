@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 21:43:41 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2022/12/18 05:52:07 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ t_list	*stack_get_min(t_list *list)
 	while (list)
 	{
 		if (*(int *)list->content < *(int *)min->content)
-		{
 			min = list;
-		}
 		list = list->next;
 	}
 	return (min);
