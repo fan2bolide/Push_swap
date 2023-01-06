@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 01:32:11 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/14 09:54:24 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/06 07:54:07 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ obj/%.o : src/%.c Makefile
 	cc -Wall -Wextra -Werror -c $< -MD -I $(LIBFT_PATH)/headers -I headers -o $@
 
 create_obj_folder :
-	mkdir -p obj
+	@mkdir -p obj
 
 clean:
 	make clean -C $(LIBFT_PATH)

@@ -8,8 +8,19 @@ push_swap
 viewer
 test.png
 .mandatory
+<<<<<<< HEAD
 testing
 .gitignore.vog
 .bonus
 .vscode
 README.md
+=======
+.bonus
+README.md
+.gitignore.vog
+testing
+viewer
+test.png
+logfile
+choupi-tester
+>>>>>>> master
