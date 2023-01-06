@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/21 14:23:20 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/06 07:59:11 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,12 @@ OBJ = $(addprefix obj/,$(SRC:.c=.o))
 BONUS_OBJ = $(addprefix obj/,$(BONUS_SRC:.c=.o))
 
 all : create_obj_folder lib .mandatory
-	$(MAKE) lib_stacks
-	$(MAKE) $(NAME)
+	@$(MAKE) lib_stacks
+	@$(MAKE) $(NAME)
 
 .mandatory :
-	touch .mandatory
-	$(RM) .viewer
+	@touch .mandatory
+	@$(RM) .viewer
 
 $(NAME) : $(OBJ) .mandatory
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o $(NAME)
@@ -49,7 +49,7 @@ bonus : create_obj_folder lib lib_stacks .viewer
 	$(RM) .mandatory
 
 create_obj_folder :
-	mkdir -p obj
+	@mkdir -p obj
 
 obj/%.o : src/%.c Makefile
 	$(CC) $(FLAGS) -c $< -MD -o $@
@@ -58,10 +58,10 @@ debug : lib lib_stacks
 	$(CC) $(OBJ) $(STACK_LIB) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
 
 lib : 
-	$(MAKE) -C libft
+	@$(MAKE) -C libft
 
 lib_stacks :
-	$(MAKE) -C stack_lib
+	@$(MAKE) -C stack_lib
 
 run : all
 	./a.out

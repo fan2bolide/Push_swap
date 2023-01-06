@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/06 07:42:32 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 07:57:46 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,18 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
-static int	start_sorting_program(int *tab, size)
+static int	start_sorting_program(int *tab, int size)
 {
-	stack = stack_create_from(tab, argc - 1);
+	t_stack	*stack;
+
+	stack = stack_create_from(tab, size);
 	if (!stack)
 		return (write(2, "Memory allocation failed, exiting program\n", 42), free(tab), 0);
-	if (argc - 1 <= 50)
+	if (size <= 50)
 		push_swap_little(stack);
 	else
 		push_swap_big(stack);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -111,7 +114,7 @@ int	main(int argc, char **argv)
 		return (write(2, "Memory allocation failed, exiting program\n", 42), 1);
 	if (!check_doubles(tab, argc - 1))
 		return (free(tab), write(1, "Error\n", 6), 1);
-	if (!start_sorting_program(tab, argc - 1));
+	if (!start_sorting_program(tab, argc - 1))
 		return (1);
 	return (0);
 }

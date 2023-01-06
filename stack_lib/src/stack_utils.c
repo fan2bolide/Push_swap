@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/06 07:44:38 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 07:55:17 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*stack_create_from(int *tab, size_t size)
 	{
 		data = malloc(sizeof(int));
 		if (!data)
-			return (ft_lstclear(stack->a, free), NULL);
+			return (ft_lstclear(&stack->a, free), NULL);
 		*data = tab[i];
 		ft_lstadd_back(&stack->a, ft_lstnew(data));
 		i++;

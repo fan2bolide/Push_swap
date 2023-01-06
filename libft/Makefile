@@ -87,7 +87,7 @@ obj/%.o : src/%.c Makefile headers/libft.h
 	cc -Wall -Wextra -Werror -c $< -o $@ -I headers
 
 create_obj_folder :
-	mkdir -p obj
+	@mkdir -p obj
 
 clean:
 	$(RM) -f $(OBJ)
