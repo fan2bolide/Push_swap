@@ -6,15 +6,13 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2022/12/16 13:11:07 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2022/12/21 14:23:20 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS += -j4
-
 NAME = push_swap
 
-FLAGS = -Werror -Wall -Wextra -I stack_lib -I libft -I .
+FLAGS = -Werror -Wall -Wextra -I stack_lib/headers -I libft/headers -I ./headers
 
 DEBUG_FLAGS = -fsanitize=address -g3
 
@@ -54,7 +52,7 @@ create_obj_folder :
 	mkdir -p obj
 
 obj/%.o : src/%.c Makefile
-	cc -Wall -Wextra -Werror -c $< -MD -I stack_lib/headers -I libft/headers -I headers -o $@
+	$(CC) $(FLAGS) -c $< -MD -o $@
 
 debug : lib lib_stacks
 	$(CC) $(OBJ) $(STACK_LIB) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)

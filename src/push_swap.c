@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/18 04:01:37 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 07:42:32 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,31 +80,38 @@ static int	ft_verif_args(char **argv, int argc)
 	return (1);
 }
 
+static int	start_sorting_program(int *tab, size)
+{
+	stack = stack_create_from(tab, argc - 1);
+	if (!stack)
+		return (write(2, "Memory allocation failed, exiting program\n", 42), free(tab), 0);
+	if (argc - 1 <= 50)
+		push_swap_little(stack);
+	else
+		push_swap_big(stack);
+}
+
 int	main(int argc, char **argv)
 {
 	int		*tab;
-	size_t	size;
-	t_stack	*stack;
 
 	if (argc == 2)
 	{
 		if (!ft_verif_args_one_argument(argv))
-			return (write(1, "Error\n", 6), -1);
+			return (write(1, "Error\n", 6), 1);
 		tab = parse_one_argument_push_swap(argv, &argc);
 	}
 	else
 	{
 		if (!ft_verif_args(argv, argc))
-			return (write(1, "Error\n", 6), -1);
+			return (write(1, "Error\n", 6), 1);
 		tab = parse_push_swap(argv, argc);
 	}
-	size = argc - 1;
-	if (!check_doubles(tab, size))
+	if (!tab)
+		return (write(2, "Memory allocation failed, exiting program\n", 42), 1);
+	if (!check_doubles(tab, argc - 1))
 		return (free(tab), write(1, "Error\n", 6), 1);
-	stack = stack_create_from(tab, size);
-	if (size <= 50)
-		push_swap_little(stack);
-	else
-		push_swap_big(stack);
+	if (!start_sorting_program(tab, argc - 1));
+		return (1);
 	return (0);
 }

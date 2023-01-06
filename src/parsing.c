@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:34:39 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 22:28:37 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/06 07:35:47 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	*parse_one_argument_push_swap(char **argv, int *argc)
 		i++;
 	*argc = i + 1;
 	tab = malloc(sizeof(int) * i);
+	if (!tab)
+		return (free(argv), NULL);
 	i = 0;
 	while (argv[i])
 	{
