@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:22:38 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/06 07:30:22 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/12 08:24:33 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ static void	stack_viewer_apply_instruction(char *instruction, t_stack *stack)
 		stack_rotate(&stack->a);
 	else if (!ft_strncmp(instruction, "rb\n", 2))
 		stack_rotate(&stack->b);
+	else if (!ft_strncmp(instruction, "rra\n", 2))
+		stack_reverse_rotate(&stack->a);
+	else if (!ft_strncmp(instruction, "rrb\n", 2))
+		stack_reverse_rotate(&stack->b);
 	else
 		stack_viewer_apply_instruction2(instruction, stack);
 }
@@ -89,7 +93,8 @@ static int	push_swap_visualuser_input_verifier(t_stack *stack)
 	}
 	if (!stack_is_sorted(stack))
 		ft_printf("???????????????????????????????\n");
-	ft_printf("Bien ouej\n");
+	else
+		ft_printf("Bien ouej\n");
 	stack_destroy(stack);
 	return (0);
 }
