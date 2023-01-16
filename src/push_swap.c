@@ -6,13 +6,13 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/16 18:34:38 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/16 19:06:26 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_doubles(int *tab, size_t size)
+int	push_swap_check_doubles(int *tab, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -32,7 +32,7 @@ static int	check_doubles(int *tab, size_t size)
 	return (1);
 }
 
-static int	str_is_made_of(char *str, char *set)
+int	push_swap_str_is_made_of(char *str, char *set)
 {
 	int	i;
 
@@ -43,27 +43,31 @@ static int	str_is_made_of(char *str, char *set)
 	return (1);
 }
 
-static int	ft_verif_args_one_argument(char **argv)
+int	push_swap_verif_args_one_argument(char **argv)
 {
 	int	i;
 
-	if (!str_is_made_of(argv[1], "0123456789 +-"))
+	if (!push_swap_str_is_made_of(argv[1], "0123456789 +-"))
 		return (0);
 	argv = ft_split(argv[1], ' ');
+	if (!argv)
+		return (0);
 	i = 0;
 	while (argv[i])
 	{
 		if (ft_atoll(argv[i]) > INT_MAX || ft_atoll(argv[i]) < INT_MIN)
-			return (free(argv), 0);
+			return (ft_split_destroy(argv), 0);
 		i++;
 	}
-	return (1);
+	return (ft_split_destroy(argv), 1);
 }
 
-static int	ft_verif_args(char **argv, int argc)
+int	push_swap_verif_args(char **argv, int argc)
 {
 	int	i;
 
+	if (argc < 2)
+		return (0);
 	i = 1;
 	while (i < argc)
 	{
@@ -74,13 +78,13 @@ static int	ft_verif_args(char **argv, int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if (!str_is_made_of(argv[i++], "0123456789 +-"))
+		if (!push_swap_str_is_made_of(argv[i++], "0123456789 +-"))
 			return (0);
 	}
 	return (1);
 }
 
-static int	start_sorting_program(int *tab, int size)
+int	push_swap_start_sorting_program(int *tab, int size)
 {
 	t_stack	*stack;
 

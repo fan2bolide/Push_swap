@@ -85,8 +85,8 @@ all	: create_obj_folder $(NAME)
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-obj/%.o : src/%.c Makefile head/libft.h
-	cc -Wall -Wextra -Werror -c $< -o $@ -I head
+obj/%.o : src/%.c Makefile headers/libft.h
+	cc -Wall -Wextra -Werror -c $< -o $@ -I headers
 
 create_obj_folder :
 	@mkdir -p obj

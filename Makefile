@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/06 07:59:11 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/16 18:43:44 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFT = libft/libft.a
 
 STACK_LIB = stack_lib/stack_lib.a
 
-SRC =	parsing.c push_swap_big.c push_swap_little.c push_swap.c
+SRC =	parsing.c push_swap_big.c push_swap_little.c push_swap.c main.c
 
 BONUS_SRC = push_swap_viewer.c
 
