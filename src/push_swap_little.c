@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:12:07 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/18 04:03:13 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/16 18:34:58 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	push_swap_little_rotate(t_stack *stack, t_list *min)
 			stack_rotate(&stack->a);
 			ft_putstr("ra\n");
 		}
-	}	
+	}
 	else
 	{
 		while (stack->a && stack->a != min)
@@ -52,7 +52,7 @@ static void	push_swap_little_rotate(t_stack *stack, t_list *min)
 void	push_swap_little(t_stack *stack)
 {
 	t_list	*min;
-	
+
 	while (stack->a && !list_is_sorted(stack->a))
 	{
 		min = stack_get_min(stack->a);

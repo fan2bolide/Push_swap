@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 20:39:11 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/03 05:26:37 by bajeanno         ###   ########lyon.fr   */
+/*   Created: 2022/11/24 16:43:00 by bajeanno          #+#    #+#             */
+/*   Updated: 2023/01/14 18:04:59 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "libft.h"
+# include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-# ifndef OPEN_MAX
-#  define OPEN_MAX 50
-# endif
-# ifndef EOF
-#  define EOF (-1)
-# endif
 
-void	*ft_memmove(void *dst, const void *src, size_t len);
-char	*ft_strfusion(char const *buf, int *size, char *line, int buf_size);
-char	*ft_realloc(char *str, int size);
-int		ft_isset(char c, char const *set);
-char	*get_next_line(int fd);
+int	ft_print_addr(void *ptr);
+int	ft_print_int(int nb);
+int	ft_print_unsigned(unsigned int nb);
+int	ft_print_hexa(int nb);
+int	ft_print_hexa_capslock(int nb);
+int	ft_putnbr_base_unsigned(size_t nb, char *base);
 
 #endif

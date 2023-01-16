@@ -27,6 +27,7 @@ SRC			=	ft_atoi.c			\
 				ft_putnbr_fd.c		\
 				ft_putstr.c			\
 				ft_putstr_fd.c		\
+				ft_split_destroy.c	\
 				ft_split.c			\
 				ft_strcat.c			\
 				ft_strchr.c			\
@@ -74,6 +75,7 @@ SRC			=	ft_atoi.c			\
 				ft_printf.c			\
 				ft_print_int.c		\
 				ft_putnbr_base_unsigned.c\
+				ft_max.c			\
 				
 
 OBJ = $(addprefix obj/,$(SRC:.c=.o))
@@ -83,8 +85,8 @@ all	: create_obj_folder $(NAME)
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-obj/%.o : src/%.c Makefile headers/libft.h
-	cc -Wall -Wextra -Werror -c $< -o $@ -I headers
+obj/%.o : src/%.c Makefile head/libft.h
+	cc -Wall -Wextra -Werror -c $< -o $@ -I head
 
 create_obj_folder :
 	@mkdir -p obj

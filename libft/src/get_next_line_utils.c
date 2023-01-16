@@ -6,21 +6,21 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 20:38:45 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/02 07:41:06 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/14 18:04:16 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft.h"
 
-char	*ft_realloc(char *str, int size)
+char	*ft_realloc_str(char *str, int new_size)
 {
 	char	*newstr;
 	size_t	len_str;
 
 	if (str == NULL)
 		return (NULL);
-	newstr = malloc(sizeof(char) * size);
+	newstr = malloc(sizeof(char) * new_size);
 	if (newstr == NULL)
 		return (NULL);
 	len_str = 0;
@@ -36,7 +36,7 @@ char	*ft_strfusion(char const *buf, int *size, char *line, int buf_size)
 	if (buf_size == 0)
 		return (line);
 	*size += buf_size;
-	line = ft_realloc(line, *size);
+	line = ft_realloc_str(line, *size);
 	line = ft_strncat(line, buf, buf_size);
 	return (line);
 }
