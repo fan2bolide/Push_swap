@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 01:32:11 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/16 18:38:08 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/16 19:35:48 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,14 @@ SRC			=	stack_print.c	\
 OBJ				:=		$(addprefix obj/,$(SRC:.c=.o))
 DEPENDS			:=		$(addprefix obj/,$(SRC:.c=.d))
 
-all	: create_obj_folder $(NAME)
+all	: create_obj_folder
+	$(MAKE) -C ../libft
+	$(MAKE) $(NAME)
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-obj/%.o : src/%.c Makefile
+obj/%.o : src/%.c Makefile $(LIBFT)
 	cc -Wall -Wextra -Werror -c $< -MD -I $(LIBFT_PATH)/headers -I headers -o $@
 
 create_obj_folder :

@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/16 18:43:44 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/16 19:36:28 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJ = $(addprefix obj/,$(SRC:.c=.o))
 
 BONUS_OBJ = $(addprefix obj/,$(BONUS_SRC:.c=.o))
 
-all : create_obj_folder lib .mandatory
+all : create_obj_folder .mandatory 
 	@$(MAKE) lib_stacks
 	@$(MAKE) $(NAME)
 
@@ -38,7 +38,7 @@ all : create_obj_folder lib .mandatory
 	@touch .mandatory
 	@$(RM) .viewer
 
-$(NAME) : $(OBJ) .mandatory
+$(NAME) : $(OBJ) .mandatory $(LIBFT) $(STACK_LIB)
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o $(NAME)
 
 bonus : create_obj_folder lib lib_stacks .viewer
@@ -57,10 +57,7 @@ obj/%.o : src/%.c Makefile
 debug : lib lib_stacks
 	$(CC) $(OBJ) $(STACK_LIB) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
 
-lib : 
-	@$(MAKE) -C libft
-
-lib_stacks :
+lib_stacks : 
 	@$(MAKE) -C stack_lib
 
 run : all
