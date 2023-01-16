@@ -1,18 +1,20 @@
-*.o
-libft/*.o
-**.o
-push_swap.dSYM
-checker
-input_file.txt
-log_file.log
-push_swap.dSYM/Contents/Info.plist
-push_swap
-.vscode/settings.json
-.vscode/c_cpp_properties.json
-.vscode/
-obj
+**/obj
+choupi-tester
 *.a
+*.o
+checker
+logfile
+push_swap
+viewer
+test.png
 .mandatory
+<<<<<<< HEAD
+testing
+.gitignore.vog
+.bonus
+.vscode
+README.md
+=======
 .bonus
 README.md
 .gitignore.vog
@@ -21,3 +23,4 @@ viewer
 test.png
 logfile
 choupi-tester
+>>>>>>> master
