@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/17 15:30:09 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 22:50:15 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,19 @@ int	push_swap_str_is_made_of(char *str, char *set)
 int	push_swap_verif_args_one_argument(char **argv)
 {
 	int	i;
+	int j;
 
 	if (!push_swap_str_is_made_of(argv[1], "0123456789 +-"))
 		return (0);
 	argv = ft_split(argv[1], ' ');
-	if (!argv)
+	if (!argv || !argv[0])
 		return (ft_split_destroy(argv), 0);
 	i = 0;
 	while (argv[i])
 	{
+		j = 0;
+		while (ft_isset(argv[i][j], "-+ "))
+			j++;
 		if (ft_atoll(argv[i]) > INT_MAX || ft_atoll(argv[i]) < INT_MIN)
 			return (ft_split_destroy(argv), 0);
 		i++;
@@ -65,6 +69,7 @@ int	push_swap_verif_args_one_argument(char **argv)
 int	push_swap_verif_args(char **argv, int argc)
 {
 	int	i;
+	int	j;
 
 	if (argc < 2)
 		return (0);
@@ -78,7 +83,10 @@ int	push_swap_verif_args(char **argv, int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if (!push_swap_str_is_made_of(argv[i++], "0123456789 +-"))
+		j = 0;
+		while (ft_isset(argv[i][j], "-+ "))
+			j++;
+		if (!push_swap_str_is_made_of(argv[i++], "0123456789"))
 			return (0);
 	}
 	return (1);

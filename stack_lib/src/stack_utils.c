@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/06 08:02:38 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 22:21:03 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,21 @@ int	list_is_sorted(t_list *list)
 		if (*(int *)list->content > *(int *)list->next->content)
 			return (0);
 		list = list->next;
+	}
+	return (1);
+}
+
+int	list_is_really_sorted(t_list *list)
+{
+	int i;
+
+	i = *(int *)list->content;
+	while (list)
+	{
+		if (*(int *)list->content != i)
+			return (0);
+		list = list->next;
+		i++;
 	}
 	return (1);
 }

@@ -8,13 +8,6 @@ push_swap
 viewer
 test.png
 .mandatory
-<<<<<<< HEAD
-testing
-.gitignore.vog
-.bonus
-.vscode
-README.md
-=======
 .bonus
 README.md
 .gitignore.vog
@@ -23,4 +16,4 @@ viewer
 test.png
 logfile
 choupi-tester
->>>>>>> master
+**/Push_Swap_Tester

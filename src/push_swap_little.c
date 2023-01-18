@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:12:07 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/16 18:34:58 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 22:34:23 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ void	push_swap_little(t_stack *stack)
 {
 	t_list	*min;
 
+	stack = stack_index(stack);
+	if (ft_lstsize(stack->a) >= 2 && ft_lstsize(stack->a) <= 4
+		&& !list_is_sorted(stack->a) && !list_is_really_sorted(stack->a->next)
+		&& *(int *)stack->a->content > *(int *)stack->a->next->content)
+	{
+		stack_swap(&stack->a);
+		ft_printf("sa\n");
+	}
 	while (stack->a && !list_is_sorted(stack->a))
 	{
 		min = stack_get_min(stack->a);

@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:22:02 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/15 21:40:58 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 22:18:18 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		stack_destroy(t_stack *stack);
 void		print_stack(t_stack *stack);
 int			stack_is_sorted(t_stack *stack);
 int			list_is_sorted(t_list *list);
+int			list_is_really_sorted(t_list *list);
 t_stack		*stack_index(t_stack *stack);
 int			stack_push_a(t_stack *stack);
 int			stack_push_b(t_stack *stack);

@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/16 19:36:28 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/18 21:57:32 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ STACK_LIB = stack_lib/stack_lib.a
 
 SRC =	parsing.c push_swap_big.c push_swap_little.c push_swap.c main.c
 
-BONUS_SRC = push_swap_viewer.c
+BONUS_SRC = 
 
 DEPENDS	:=	$(addprefix obj/,$(SRC:.c=.d)) $(addprefix obj/,${BONUS_SRC:.c=.d})
 
