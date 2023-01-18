@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 02:14:16 by bajeanno          #+#    #+#             */
-/*   Updated: 2022/12/14 05:16:10 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 22:56:02 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_stack(t_stack *stack)
 
 	curr_a = stack->a;
 	curr_b = stack->b;
-	ft_printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	ft_printf("\n");
 	while (curr_a && curr_b)
 	{
 		ft_printf("\t %d\t", *(int *)curr_a->content);

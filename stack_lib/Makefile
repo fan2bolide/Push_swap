@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 01:32:11 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/16 19:35:48 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/18 23:00:12 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,6 @@ re: fclean
 	make fclean -C $(LIBFT_PATH)
 	$(MAKE) all
 
-.PHONY : all bonus clean fclean re lib
+.PHONY : all clean fclean re create_obj_folder
 
 -include $(DEPENDS)

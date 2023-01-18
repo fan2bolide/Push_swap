@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/18 21:57:32 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/18 23:00:21 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ lib_stacks :
 	@$(MAKE) -C stack_lib
 
 run : all
-	./a.out
+	./$(NAME)
 
 clean :
 	$(RM) $(OBJ) $(BONUS_OBJ) $(DEPENDS)
@@ -81,6 +81,6 @@ fclean : clean
 re : fclean
 	$(MAKE) all
 
-.PHONY : all lib run re clean fclean bonus
+.PHONY : all run re clean fclean bonus create_obj_folder
 
 -include $(DEPENDS)
