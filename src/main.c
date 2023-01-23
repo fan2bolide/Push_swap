@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:34:18 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/18 22:37:40 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/23 23:11:00 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	int	*tab;
 
+	if (argc == 1)
+		return (1);
 	if (argc == 2)
 	{
 		if (!push_swap_verif_args_one_argument(argv))

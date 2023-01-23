@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:13:59 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/18 22:21:03 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/24 00:29:17 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,12 @@ t_list	*stack_get_min(t_list *list)
 
 int	stack_is_sorted(t_stack *stack)
 {
-	return (!stack->b && list_is_sorted(stack->a));
-}
-
-int	list_is_sorted(t_list *list)
-{
-	while (list && list->next)
-	{
-		if (*(int *)list->content > *(int *)list->next->content)
-			return (0);
-		list = list->next;
-	}
-	return (1);
+	return (!stack->b && ft_lst_is_sorted(stack->a));
 }
 
 int	list_is_really_sorted(t_list *list)
 {
-	int i;
+	int	i;
 
 	i = *(int *)list->content;
 	while (list)

@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:44:35 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/12 07:40:19 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/24 00:25:51 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	push_swap_big(t_stack *stack)
 	stack = stack_index(stack);
 	max_index = stack_radix_get_max_bits_number(stack->a);
 	sort_index = 0;
-	while (!list_is_sorted(stack->a) && sort_index < max_index)
+	while (!ft_lst_is_sorted(stack->a) && sort_index < max_index)
 		stack_radix_sort_a(stack, sort_index++);
 	while (stack->b)
 		stack_push_a(stack);

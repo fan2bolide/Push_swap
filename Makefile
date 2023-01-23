@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/18 23:00:21 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/23 23:08:16 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,6 @@ fclean : clean
 re : fclean
 	$(MAKE) all
 
-.PHONY : all run re clean fclean bonus create_obj_folder
+.PHONY : all debug lib_stacks run re clean fclean bonus create_obj_folder
 
 -include $(DEPENDS)
