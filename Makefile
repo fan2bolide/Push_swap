@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/24 01:19:32 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/24 01:22:56 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,15 +54,13 @@ run : all
 clean :
 	$(RM) $(OBJ) $(BONUS_OBJ) $(DEPENDS)
 	$(RM) -r push_swap.dSYM
+	$(RM) $(BONUS_SRC:.c=.d)
 	$(MAKE) clean -C stack_lib
 	$(MAKE) clean -C libft
 	$(RM) -r obj
 	
 fclean : clean
 	$(RM) $(NAME)
-	$(RM) viewer
-	$(RM) $(BONUS_SRC:.c=.d)
-	$(RM) .mandatory .viewer
 	$(MAKE) fclean -C stack_lib
 	$(MAKE) fclean -C libft
 
