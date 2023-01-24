@@ -6,7 +6,7 @@
 #    By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:25:14 by bajeanno          #+#    #+#              #
-#    Updated: 2023/01/23 23:08:16 by bajeanno         ###   ########lyon.fr    #
+#    Updated: 2023/01/24 01:19:32 by bajeanno         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,32 +30,20 @@ OBJ = $(addprefix obj/,$(SRC:.c=.o))
 
 BONUS_OBJ = $(addprefix obj/,$(BONUS_SRC:.c=.o))
 
-all : create_obj_folder .mandatory 
+all : create_obj_folder
 	@$(MAKE) lib_stacks
 	@$(MAKE) $(NAME)
 
-.mandatory :
-	@touch .mandatory
-	@$(RM) .viewer
-
-$(NAME) : $(OBJ) .mandatory $(LIBFT) $(STACK_LIB)
+$(NAME) : $(OBJ) $(LIBFT) $(STACK_LIB)
 	$(CC) $(OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o $(NAME)
 
-bonus : create_obj_folder lib lib_stacks .viewer
-
-.viewer : $(BONUS_OBJ) $(OBJ)
-	$(CC) obj/parsing.o $(BONUS_OBJ) $(LIBFT) $(STACK_LIB) $(FLAGS) -o viewer
-	touch .viewer
-	$(RM) .mandatory
+bonus :
 
 create_obj_folder :
 	@mkdir -p obj
 
 obj/%.o : src/%.c Makefile
 	$(CC) $(FLAGS) -c $< -MD -o $@
-
-debug : lib lib_stacks
-	$(CC) $(OBJ) $(STACK_LIB) $(LIBFT) $(FLAGS) $(DEBUG_FLAGS)
 
 lib_stacks : 
 	@$(MAKE) -C stack_lib
