@@ -6,7 +6,7 @@
 /*   By: bajeanno <bajeanno@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 04:14:49 by bajeanno          #+#    #+#             */
-/*   Updated: 2023/01/24 00:30:04 by bajeanno         ###   ########lyon.fr   */
+/*   Updated: 2023/01/28 14:31:00 by bajeanno         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	push_swap_verif_args_one_argument(char **argv)
 		if (j > 1)
 			return (ft_split_destroy(argv), 0);
 		if (!push_swap_str_is_made_of(argv[i] + j, "0123456789"))
-			return (0);
+			return (ft_split_destroy(argv), 0);
 		if (ft_atoll(argv[i]) > INT_MAX || ft_atoll(argv[i]) < INT_MIN)
 			return (ft_split_destroy(argv), 0);
 		i++;
